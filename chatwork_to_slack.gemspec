@@ -34,6 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
 
-  spec.add_runtime_dependency "chatwork"
-  spec.add_runtime_dependency "goodbye_chatwork"
+  spec.add_runtime_dependency "chatwork", "~> 0.3"
+  spec.add_runtime_dependency "goodbye_chatwork", "~> 0.0"
 end
