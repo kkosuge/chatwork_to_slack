@@ -7,3 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+/chatwork_to_slack_data/
+/chatwork_logs/
+/users.csv

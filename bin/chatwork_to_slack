@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "chatwork_to_slack"
+require "optparse"
+require "fileutils"
+require "chatwork"
+require "goodbye_chatwork"
+require "csv"
+require "pry"
+require "pp"
+
+
+opts = ARGV.getopts('i:p:e:x:c:d:h:k:', 'generate-template')
+email = opts['i']
+password = opts['p']
+chatwork_api_key = opts['k']
+
+if opts['generate-template'] && !!chatwork_api_key
+  client = ChatworkToSlack::Client.new(chatwork_api_key: chatwork_api_key)
+  if File.exists?('users.csv')
+    puts 'users.csv exists'
+  else
+    File.write('users.csv', client.generate_template)
+  end
+  exit
+end
+
+if opts['h'] || !email || !password
+  puts <<-EOS
+Usage: chatwork_to_slack
+    -i your chatwork id -p your chatwork password
+    -e room id (export specified room's chat logs)
+    -x room id (export specified room's chat logs and download attachment files)
+    -c slack channel name
+    -d dir
+    -k chatwork API key (if --generate-template)
+    -h help
+    --generate-template generate users.csv
+Example:
+show room list
+    $ chatwork_to_slack -i example@example.com -p your_password
+export specified room's chat logs (-e: chat logs only)
+    $ chatwork_to_slack -i example@example.com -p your_password -e room_id -c slack_channel_name
+export specified room's chat logs (-x: chat logs and attachment files)
+    $ chatwork_to_slack -i example@example.com -p your_password -x room_id -c slack_channel_name
+  EOS
+  exit
+end
+
+gcw = GoodbyeChatwork::Client.new(email, password, verbose: true)
+
+users =
+  if File.exists?('users.csv')
+    CSV.table('users.csv').map {|t| t.to_h }
+  else
+    gcw.info '[warning] users.csv not found'
+    []
+  end
+
+ChatworkToSlack::Importer.new(
+  gcw,
+  room_id: opts['x'] || opts['e'],
+  channel: opts['c'],
+  workdir: opts['d'] || 'chatwork_to_slack_data',
+  export_files: !!opts['x'],
+  users: users,
+  chatwork_api_key: chatwork_api_key
+)
