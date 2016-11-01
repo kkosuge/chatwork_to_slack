@@ -1,4 +1,4 @@
-module ChatworkToSlack
+module ChatWorkToSlack
   module Filters
     class Picon
       def self.call(text, options)

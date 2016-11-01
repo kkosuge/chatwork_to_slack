@@ -1,4 +1,4 @@
-# ChatworkToSlack
+# ChatWorkToSlack
 
 ChatWork（chatwork.com）のデータを Slack の Import CSV 形式に変換するツール
 

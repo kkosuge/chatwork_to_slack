@@ -1,6 +1,6 @@
 require 'chatwork'
 
-module ChatworkToSlack
+module ChatWorkToSlack
   class Importer
     attr_reader :room_id, :channel, :workdir, :export_files, :gcw, :c2s, :users, :chatwork_api_key
     def initialize(gcw, args)
@@ -60,7 +60,7 @@ module ChatworkToSlack
     end
 
     def c2s
-      @c2s ||= ChatworkToSlack::Client.new(
+      @c2s ||= ChatWorkToSlack::Client.new(
         room_id: room_id,
         channel: channel,
         workdir: workdir,

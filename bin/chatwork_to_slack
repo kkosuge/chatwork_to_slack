@@ -17,7 +17,7 @@ password = opts['p']
 chatwork_api_key = opts['k']
 
 if opts['generate-template'] && !!chatwork_api_key
-  client = ChatworkToSlack::Client.new(chatwork_api_key: chatwork_api_key)
+  client = ChatWorkToSlack::Client.new(chatwork_api_key: chatwork_api_key)
   if File.exists?('users.csv')
     puts 'users.csv exists'
   else
@@ -58,7 +58,7 @@ users =
     []
   end
 
-ChatworkToSlack::Importer.new(
+ChatWorkToSlack::Importer.new(
   gcw,
   room_id: opts['x'] || opts['e'],
   channel: opts['c'],

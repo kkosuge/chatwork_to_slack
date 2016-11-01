@@ -4,7 +4,7 @@ require "chatwork_to_slack/importer"
 require "find"
 require "csv"
 
-module ChatworkToSlack
+module ChatWorkToSlack
   class Client
     attr_reader :room_id, :channel, :workdir, :chatwork_csv_path, :users, :chatwork_api_key
 

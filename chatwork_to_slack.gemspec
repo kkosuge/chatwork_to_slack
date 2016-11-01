@@ -5,7 +5,7 @@ require 'chatwork_to_slack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "chatwork_to_slack"
-  spec.version       = ChatworkToSlack::VERSION
+  spec.version       = ChatWorkToSlack::VERSION
   spec.authors       = ["kkosuge"]
   spec.email         = ["root@kksg.net"]
 

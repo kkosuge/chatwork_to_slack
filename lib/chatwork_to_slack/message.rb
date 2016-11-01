@@ -5,7 +5,7 @@ require "chatwork_to_slack/filters/pre"
 require "chatwork_to_slack/filters/reply"
 require "chatwork_to_slack/filters/quote"
 
-module ChatworkToSlack
+module ChatWorkToSlack
   class Message
     attr_reader :channel, :users
     def initialize(args)
@@ -43,12 +43,12 @@ module ChatworkToSlack
 
     def filters
       [
-        ChatworkToSlack::Filters::Dtext,
-        ChatworkToSlack::Filters::Emoji,
-        ChatworkToSlack::Filters::Picon,
-        ChatworkToSlack::Filters::Pre,
-        ChatworkToSlack::Filters::Reply,
-        ChatworkToSlack::Filters::Quote,
+        ChatWorkToSlack::Filters::Dtext,
+        ChatWorkToSlack::Filters::Emoji,
+        ChatWorkToSlack::Filters::Picon,
+        ChatWorkToSlack::Filters::Pre,
+        ChatWorkToSlack::Filters::Reply,
+        ChatWorkToSlack::Filters::Quote,
       ]
     end
 
