@@ -2,18 +2,24 @@
 
 ChatWork（chatwork.com）のデータを Slack の Import CSV 形式に変換するツール
 
-## Usage
-
-CSV ファイルのテンプレートを作成
+## Installation
 
 ```
-./bin/chatwork_to_slack --generate-template -k chatwork_api_key
+$ gem install chatwork_to_slack
+```
+
+## Usage
+
+ユーザー定義リストのテンプレートを作成
+
+```
+$ chatwork_to_slack --generate-template -k chatwork_api_key
 ```
 
 ChatWork からデータをダウンロードして Slack 形式に変換
 
 ```
-./bin/chatwork_to_slack -i example@example.co.jp -p your_password -x chatwork_room_id -c slack_channel_name
+$ chatwork_to_slack -i example@example.co.jp -p your_password -x chatwork_room_id -c slack_channel_name
 ```
 
 ## Contributing
