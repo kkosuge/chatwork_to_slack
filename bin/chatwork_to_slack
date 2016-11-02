@@ -21,7 +21,10 @@ if opts['generate-template'] && !!chatwork_api_key
   if File.exists?('users.csv')
     puts 'users.csv exists'
   else
-    File.write('users.csv', client.generate_template)
+    csv = client.generate_template
+    CSV.parse(csv).each {|row| p row }
+    File.write('users.csv', csv)
+    puts 'users.csv generated'
   end
   exit
 end
