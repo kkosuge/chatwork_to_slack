@@ -1,14 +1,11 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
 require "chatwork_to_slack"
 require "optparse"
 require "fileutils"
 require "chatwork"
 require "goodbye_chatwork"
 require "csv"
-require "pry"
-require "pp"
 
 
 opts = ARGV.getopts('i:p:e:x:c:d:h:k:', 'generate-template')
